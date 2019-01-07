@@ -5,7 +5,7 @@ spring:
 --- #3个 - 用于分隔不同开发环境的配置
 #开发环境的配置
 server:
-  port: 8012
+  port: 8002
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml      #Mybatis配置文件地址
@@ -34,7 +34,7 @@ eureka:
       #defaultZone: http://yifeng.com:7001/eureka/   #单机版
       defaultZone: http://yifeng-01.com:7001/eureka/,http://yifeng-02.com:7002/eureka/,http://yifeng-03.com:7003/eureka/
   instance:
-    instance-id: springcloud-dept-8012-dev
+    instance-id: springcloud-dept-8002-dev
     prefer-ip-address: true     #访问路径可以显示IP地址
 
 info:
@@ -46,7 +46,7 @@ info:
 ---
 #测试环境的配置
 server:
-  port: 8022
+  port: 8012
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml      #Mybatis配置文件地址
@@ -75,7 +75,7 @@ eureka:
       #defaultZone: http://yifeng.com:7001/eureka/   #单机版
       defaultZone: http://yifeng-01.com:7001/eureka/,http://yifeng-02.com:7002/eureka/,http://yifeng-03.com:7003/eureka/
   instance:
-    instance-id: springcloud-dept-8022-test
+    instance-id: springcloud-dept-8012-test
     prefer-ip-address: true     #访问路径可以显示IP地址
 
 info:
