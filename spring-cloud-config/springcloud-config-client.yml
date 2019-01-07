@@ -1,0 +1,85 @@
+spring:
+  profiles:
+    active:
+    - dev
+--- #3个 - 用于分隔不同开发环境的配置
+#开发环境的配置
+server:
+  port: 8012
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml      #Mybatis配置文件地址
+  type-aliases-package: com.yifeng.springcloud.entities   #所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml     #Mapper映射文件
+
+spring:
+  profile: dev
+  application:
+    name: springcloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_cloud_db02
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5                     # 数据库连接池的最小维持连接数
+      initial-size: 5                 # 初始化连接数
+      max-total: 5                    # 最大连接数
+      max-wait-millis: 200            # 等待连接获取的最大超时时间
+
+eureka:
+  client:   #将客户端注册进Eureka服务列表中
+    service-url:
+      #defaultZone: http://yifeng.com:7001/eureka/   #单机版
+      defaultZone: http://yifeng-01.com:7001/eureka/,http://yifeng-02.com:7002/eureka/,http://yifeng-03.com:7003/eureka/
+  instance:
+    instance-id: springcloud-dept-8012-dev
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+info:
+  app.name: yifeng-springcloud-dev
+  company.name: www.yifeng.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
+
+---
+#测试环境的配置
+server:
+  port: 8022
+
+mybatis:
+  config-location: classpath:mybatis/mybatis.cfg.xml      #Mybatis配置文件地址
+  type-aliases-package: com.yifeng.springcloud.entities   #所有Entity别名类所在包
+  mapper-locations: classpath:mybatis/mapper/**/*.xml     #Mapper映射文件
+
+spring:
+  profile: test
+  application:
+    name: springcloud-dept
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/spring_cloud_db02
+    username: root
+    password: 123456
+    dbcp2:
+      min-idle: 5                     # 数据库连接池的最小维持连接数
+      initial-size: 5                 # 初始化连接数
+      max-total: 5                    # 最大连接数
+      max-wait-millis: 200            # 等待连接获取的最大超时时间
+
+eureka:
+  client:   #将客户端注册进Eureka服务列表中
+    service-url:
+      #defaultZone: http://yifeng.com:7001/eureka/   #单机版
+      defaultZone: http://yifeng-01.com:7001/eureka/,http://yifeng-02.com:7002/eureka/,http://yifeng-03.com:7003/eureka/
+  instance:
+    instance-id: springcloud-dept-8012-test
+    prefer-ip-address: true     #访问路径可以显示IP地址
+
+info:
+  app.name: yifeng-springcloud-test
+  company.name: www.yifeng.com
+  build.artifactId: $project.artifactId$
+  build.version: $project.version$
