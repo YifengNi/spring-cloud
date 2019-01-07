@@ -75,7 +75,7 @@ eureka:
       #defaultZone: http://yifeng.com:7001/eureka/   #单机版
       defaultZone: http://yifeng-01.com:7001/eureka/,http://yifeng-02.com:7002/eureka/,http://yifeng-03.com:7003/eureka/
   instance:
-    instance-id: springcloud-dept-8012-test
+    instance-id: springcloud-dept-8022-test
     prefer-ip-address: true     #访问路径可以显示IP地址
 
 info:
